@@ -1,0 +1,97 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Sign Up">
+  </form>
+  <p>Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  {% csrf_token %}
+  <form method="POST">
+    <Label for="username">Username:</Label>
+    <input type="text" name="username" id="username" required>
+    <br>
+    <br>
+    <Label for="fname">First Name:</Label>
+    <input type="text" name="fname" id="fname" required> 
+    <br>
+    <br>
+    <Label for="lname">Last Name:</Label>
+    <input type="text" name="lname" id="lname" required>
+    <br>
+    <br>
+    <Label for="email">Email:</Label>
+    <input type="text" name="email" id="email" required>
+    <br>
+    <br>
+    <Label for="pass1">Password:</Label>
+    <input type="text" name="pass1" id="pass1" required>
+    <br>
+    <br>
+    <Label for="pass2">Confirm Password:</Label>
+    <input type="text" name="pass2" id="pass2" required>
+    <br>
+    <br>
+    <input type="submit" value="Sign Up">
+  </form>
+  <p>Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" required>
+    <br>
+    <br>
+    <label for="fname">First Name:</label>
+    <input type="text" name="fname" id="fname" required>
+    <br>
+    <br>
+    <label for="lname">Last Name:</label>
+    <input type="text" name="lname" id="lname" required>
+    <br>
+    <br>
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" required>
+    <br>
+    <br>
+    <label for="pass1">Password:</label>
+    <input type="text" name="pass1" id="pass1" required>
+    <br>
+    <br>
+    <label for="pass2">Confirm Password:</label>
+    <input type="text" name="pass2" id="pass2" required>
+    <br>
+    <br>
+    <input type="submit" value="Sign Up">
+  </form>
+  <p>Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
+</body>
+</html>

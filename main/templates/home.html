@@ -1,0 +1,32 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>Welcome to the Home Page</h1>
+  {% if user.is_authenticated %}
+    <h3>Hello {{ user.username }}!</h3>
+    <h4>You're successfully logged in.</h4>
+    <a href="{% url 'signout' %}">SignOut</a>
+  {% else %}
+    <a href="{% url 'signup' %}">SignUp</a> |
+    <a href="{% url 'signin' %}">SignIn</a>
+  {% endif %}
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+</head>
+<body>
+  <h1>Home Page</h1>
+  <a href="{% url 'signup' %}">Sign Up</a> |
+  <a href="{% url 'signin' %}">Sign In</a>
+</body>
+</html>
