@@ -21,6 +21,46 @@
 #     ports:
 #       - "3307:3306"
 
+#  version: '3'
+#  services:
+
+#    db:
+#      image: mysql
+#      container_name: mysite-db
+#      restart: always
+#      healthcheck:
+#        test: "mysql -uSarvajith -p12345 -e 'select 1;'"
+#        interval: 1s
+#        retries: 20
+#      volumes:
+#        #- ./dbdata:/var/lib/mysql
+#        - ./dbdata1:/var/lib/mysql
+#        - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+#      ports:
+#        - "3307:3306"
+#      environment:
+#        - MYSQL_ROOT_PASSWORD=12345
+#        - MYSQL_DATABASE_NAME=med2
+#        - MYSQL_USER=Sarvajith
+
+#    web:
+#      build: .
+#      image: mysite2/medicine-app:latest
+#      volumes:
+#        - .:/app
+#      ports:
+#        - "8000:8000"
+#      environment:
+#        - HOST=db
+#        - PORT=3306
+#        - MYSQL_DATABASE_NAME=med2
+#        - MYSQL_USER=Sarvajith
+#        - MYSQL_ROOT_PASSWORD=12345
+#      depends_on:
+#         db:
+#           condition: service_healthy
+#      entrypoint: ["/bin/bash", "-c", "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+
  version: '3'
  services:
 
@@ -34,18 +74,18 @@
        retries: 20
      volumes:
        #- ./dbdata:/var/lib/mysql
-       #- ./dbdata1:/var/lib/mysql
+       - ./dbdata1:/var/lib/mysql
        - ./db.sql:/docker-entrypoint-initdb.d/db.sql
      ports:
        - "3307:3306"
      environment:
-       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-       - MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME}
-       - MYSQL_USER=${MYSQL_USER}
+       - MYSQL_ROOT_PASSWORD=12345
+       - MYSQL_DATABASE_NAME=med2
+       - MYSQL_USER=Sarvajith
 
    web:
      build: .
-     image: mysite2/medicine-app:latest
+     image: chillthrower/med-app:latest
      volumes:
        - .:/app
      ports:
@@ -53,56 +93,13 @@
      environment:
        - HOST=db
        - PORT=3306
-       - MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME}
-       - MYSQL_USER=${MYSQL_USER}
-       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+       - MYSQL_DATABASE_NAME=med2
+       - MYSQL_USER=Sarvajith
+       - MYSQL_ROOT_PASSWORD=12345
      depends_on:
         db:
           condition: service_healthy
      entrypoint: ["/bin/bash", "-c", "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
-
-# version: '3'
-# services:
-
-#   db:
-#     image: mysql
-#     container_name: mysite-db
-#     restart: always
-#     healthcheck:
-#       test: "mysql -u root -p${MYSQL_ROOT_PASSWORD} -e 'SELECT 1;'"
-#       interval: 1s
-#       retries: 20
-#     volumes:
-#       - ./dbdata1:/var/lib/mysql
-#       - ./db.sql:/docker-entrypoint-initdb.d/db.sql
-#     ports:
-#       - "3307:3306"
-#     environment:
-#       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-#       - MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME}
-#       - MYSQL_USER=${MYSQL_USER}
-
-#   web:
-#     build: .
-#     image: mysite2/medicine-app:latest
-#     volumes:
-#       - .:/app
-#     ports:
-#       - "8000:8000"
-#     environment:
-#       - HOST=db
-#       - PORT=3306
-#       - MYSQL_DATABASE_NAME=${MYSQL_DATABASE_NAME}
-#       - MYSQL_USER=${MYSQL_USER}
-#       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-#     depends_on:
-#       db:
-#         condition: service_healthy
-#     command: >
-#       bash -c "python manage.py makemigrations &&
-#                python manage.py migrate &&
-#                python manage.py runserver 0.0.0.0:8000 &&
-#                mysql -h db -u root -p${MYSQL_ROOT_PASSWORD} < /app/db.sql"
 
 
 
